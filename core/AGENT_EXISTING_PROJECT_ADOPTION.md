@@ -163,7 +163,7 @@ Correct behavior:
 
 - inspect the current model
 - preserve what already works
-- cherry-pick the new philosophy and rules into the existing modal shape
+- cherry-pick the new philosophy and rules into the existing model and file structure
 - only replace or relocate files when the old shape is actively causing confusion or risk
 
 ## Final Rule

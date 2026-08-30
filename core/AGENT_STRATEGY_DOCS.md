@@ -186,7 +186,7 @@ Audience:
 Rules:
 
 - highest review bar
-- explicit the owner approval before sending or posting
+- explicit owner approval before sending or posting
 - no bot voice unless explicitly approved for that client workflow
 - no internal reasoning, internal debate, or agency-only notes
 - no unsupported numbers or claims

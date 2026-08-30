@@ -91,6 +91,7 @@ Always update:
 
 Update only when meaningful:
 
+- `discussion.md`
 - `journal/`
 - `research/`
 - `handoff.md`
