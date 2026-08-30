@@ -61,7 +61,9 @@ Project-level and subproject-level files may add project-specific rules, but the
 - execution planning
 - identifying risks, blockers, and dependencies
 - proposing the best default path
-- routine implementation decisions that do not change approved scope
+- routine implementation decisions inside the approved plan that do not change its scope
+
+Outside the approved plan nothing is changed without asking first, including small fixes in files the plan does not touch. "Obvious" is not a category; ask.
 
 ### Agents must not decide alone
 
@@ -391,6 +393,7 @@ Optional:
 - Every new request that should become work must be captured in the task system before execution.
 - If the request matches an existing task, update that task instead of creating a duplicate.
 - Work should proceed from the ordered task list instead of jumping ahead through ad hoc chat flow.
+- Deferring, parking, or pushing work to a later session is the owner's decision, never the agent's. An agent does not close a thread by proposing to continue it another day; it finishes, or names the blocker and moves to the next step.
 - Do not silently move a new request to the top of the active list if it interrupts current work. Ask the owner whether it should become the new top priority, be queued after current work, or be recorded for later.
 - If the owner explicitly chooses to reprioritize it, set `priority` to `now` and move it to the top before working it.
 - Execute from the task list, not from ad hoc chat memory.
@@ -437,6 +440,8 @@ When a project has multiple workstreams or repos:
 The shared operating model defines the default command behavior. Project files provide the authoritative concrete mapping for a specific project.
 
 ### `sss`
+
+State is committed as it changes during the session, not batched at the end; `sss` is the check that nothing meaningful is left uncommitted or unrecorded.
 
 Session shutdown should leave the next session ready to resume immediately.
 
