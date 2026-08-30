@@ -26,6 +26,10 @@ Project-level and subproject-level files may add project-specific rules, but the
 - Do not reopen settled decisions without new evidence.
 - Minimize rework, wasted energy, and avoidable token use.
 - Keep the system understandable across agents, not optimized for one tool only.
+- Think from first principles: ask why before how, challenge assumptions, and say plainly when reasoning is flawed. Do not agree to be agreeable.
+- Report in short status, not long audit trails. Detail goes into the canonical files.
+- Decisions already made stay made. Do not re-ask for confirmation of something already approved.
+- Write plainly everywhere, including commits and replies: no filler, no hedging, no em dashes.
 
 ## Human Context
 
@@ -1010,3 +1014,61 @@ The goal is for the owner and multiple agents to work inside one shared system:
 - one clear human decision-maker
 
 If a workflow change makes agents more powerful but makes the system less safe, less understandable, or less consistent across tools, it is the wrong change.
+
+## Doubt, Pair Review, Escalate
+
+When uncertain about scope, framing, interpretation, a technical call, or whether to act at all:
+
+1. Surface the doubt. Do not push through it quietly.
+2. Pair review. For content, facts, code, security, or strategy, get a second pass from the project's review agent before shipping. If none is configured, do an explicit second pass yourself framed as "what could be wrong here".
+3. Escalate to the owner when pair review does not resolve it, or when the call needs owner-level input: client direction, budget, anything irreversible.
+
+Skipping a step (pushing through doubt, posting unreviewed claims, acting on irreversible decisions without confirmation) breaks trust.
+
+## Verification From More Than One Angle
+
+Facts and numbers are verified from independent sources before they are stated as fact. Single-source claims are how trust breaks.
+
+- Analytics or search numbers: at least two independent tools.
+- The state of a page or deployment: the live response, the build output, and the admin view.
+- The state of a project: tracker history, the vault, and the code.
+- Security: the full checklist, not the first issue found.
+
+The same applies to QA of content, design, and UX: check every aspect, not just the headline.
+
+## Code Security
+
+Every code change ships secure or does not ship.
+
+- Never commit secrets. Keys, tokens, passwords, and connection strings live in environment variables or a secrets manager. If a secret is ever committed, rotate it first, then clean the history.
+- Validate every input; trust nothing from a client, a webhook, a form, or a file upload.
+- Authenticate and authorize every endpoint, default deny. Verify signatures on webhooks.
+- Parameterized queries only. Escape on output.
+- Review the whole checklist on every change: secrets in the repo or logs, input validation, auth and authz, signature checks, rate limits, error leaks, upload restrictions, open redirects, SSRF, XSS, CSRF, injection, dependency vulnerabilities, deploy permissions.
+- Run a security review on every commit that touches code, scoped to that diff, and fix anything serious before the change is merged. Refactors are not exempt.
+- There is no "fix it later" for security.
+
+## Task Notes On Open And Close
+
+A task created without context is noise, and a task closed without context is a hole in the record.
+
+- On open: scope, acceptance criteria, links to related work, and the reason the task exists. One-line titles are not enough.
+- On close: what actually shipped, references to commits or changes, deviations from the original scope, and any follow-ups surfaced.
+- Superseded tasks get a note that says why and points at the replacement.
+- Task descriptions are person-neutral so anyone can pick them up; ownership and mentions go in comments, not in the description.
+
+## Names In Team-Visible Documents
+
+Use role titles (design lead, front-end developer) rather than personal names in documents the wider team or a client will see. Keep personal tool configuration files (for example `CLAUDE.md`, `.claude/`) out of shared repositories unless a project explicitly decides otherwise.
+
+## What Gets Written To Durable Memory
+
+Tool-native memory is convenient and easy to pollute. A rule earns a durable memory entry only when all four hold:
+
+1. The path is approved: it comes from an explicit session-end step or an explicit "remember this" from the owner.
+2. It is a pattern, not an incident: it has recurred across sessions, or the owner named it as durable.
+3. Its future impact is not obvious from the code, the docs, or the history.
+4. It changes behaviour in unrelated sessions, not only in one tool's one workflow.
+
+Anything that fails a gate is recorded in the current session file instead, and promoted later only if the pattern repeats.
+
