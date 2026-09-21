@@ -4,7 +4,7 @@
 
 - **What:** a written operating model for working with AI coding agents (Claude Code, Codex, and others) as a small team with one human owner. Rules, decision boundaries, session procedures, and a file layout that keeps project memory outside chat.
 - **Why:** several agents, several tools, one person. Without a shared contract every session drifts, scope creeps, settled decisions get reopened, and the real record lives in chat history nobody reads.
-- **First step:** copy `templates/AGENT_PROJECT_TEMPLATE.md` into a project as `AGENT_PROJECT.md`, fill in the paths, create `tasks.md` and `session.md` where it points, and start your next session with `ss`.
+- **First step:** copy `templates/AGENTS_TEMPLATE.md` into a repository as `AGENTS.md`, fill in the paths, create `tasks.md` and `session.md` where it points, and start your next session with `ss`.
 
 This is the public edition of a system used daily since April 2026; personal and client-specific details are removed.
 
@@ -13,16 +13,18 @@ This is the public edition of a system used daily since April 2026; personal and
 - `core/AGENT_USER_TEMPLATE.md` · the operating model: plan-first workflow (with a defined lighter mode), decision boundaries (what the owner decides, what agents may decide, what agents must never decide alone), one-thing-at-a-time communication, task intake and priority, two levels of execution logging, change-impact checks, feature contracts, parallel worker packets and agent-to-agent conflict rules, cost budgets, untrusted input, outages, owner absence, rollback, onboarding and retiring rules, code security, and the session commands.
 - `core/AGENT_EXISTING_PROJECT_ADOPTION.md` · adopting the model in a project that already exists: rules first, keep working paths, restructure only when structure is the actual problem, back up before structural change.
 - `core/AGENT_STRATEGY_DOCS.md` · writing rules for direction-setting documents: briefs, standards, audit reports, decision memos, announcements.
-- `templates/AGENT_PROJECT_TEMPLATE.md` · the root bootstrap file a project carries so any agent can start correctly.
+- `templates/AGENTS_TEMPLATE.md` · the file a repository carries so any agent can start correctly. Codex and Cursor read it natively; Claude Code reads `CLAUDE.md`, which points at it.
 - `templates/AGENT_SUBPROJECT_TEMPLATE.md` · the narrower file for a repo or workstream inside a larger project.
-- `examples/` · one filled-in project file and one worked two-agent scenario (handoff, conflict, rollback).
+- `examples/` · one filled-in agents file and one worked two-agent scenario (handoff, conflict, rollback).
 
 Native tool files (`CLAUDE.md`, `AGENTS.md`) are thin adapters that point at these; they are not separate knowledge stores. A minimal adapter is three lines:
 
 ```
 # CLAUDE.md
-Read AGENT_PROJECT.md first and follow it. It defines the session commands, the source-of-truth order, and where task and session state live.
+Read AGENTS.md first and follow it. It defines the session commands, the source-of-truth order, and where task and session state live.
 ```
+
+Add rules to `AGENTS.md` and nowhere else. The moment the same rule exists in two files, they drift.
 
 ## The session commands
 
@@ -35,11 +37,17 @@ Both are defined in the operating model and can be renamed per project; the poin
 ## How to adopt it
 
 1. Put `core/` somewhere every tool on your machine reads: a copy in the repo, a shared local folder, or a symlink.
-2. Add `AGENT_PROJECT.md` to the project root (from the template) and let `CLAUDE.md` / `AGENTS.md` point at it.
+2. Add `AGENTS.md` to the repository root (from the template) and let `CLAUDE.md` point at it.
 3. Create the durable state files it names. "Vault" means any durable, shared file location: a notes vault, a `docs/` folder in the repo, or a tracker, as long as it is written to and read from every session. Set `docs-root` to that path.
 4. Run `ss` at the start and `sss` at the end of every session.
 
-Start small: one project file, `tasks.md`, `session.md`. Grow into the fuller structure when the project's complexity asks for it.
+Start small: one `AGENTS.md`, `tasks.md`, `session.md`. Grow into the fuller structure when the project's complexity asks for it.
+
+## Migrating from `AGENT_PROJECT.md`
+
+Earlier versions made `AGENT_PROJECT.md` the file a repository carried. `AGENTS.md` now holds that role, because more tools read it natively and it is the file that stopped rules drifting in practice.
+
+Nothing has to move. Either rename `AGENT_PROJECT.md` to `AGENTS.md`, or leave it where it is and have `AGENTS.md` point at it. A project that spans several repositories can still keep an `AGENT_PROJECT.md` above them.
 
 ## Principles in one breath
 

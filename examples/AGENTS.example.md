@@ -1,4 +1,4 @@
-# AGENT_PROJECT.md (example: a small product app)
+# AGENTS.md (example: a small product app)
 
 This file is the root bootstrap for this repo. Read it before interpreting shorthand or taking meaningful action.
 

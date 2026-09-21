@@ -86,8 +86,8 @@ Follow the execution steps below. Lighter mode, only when the owner asks for it 
 At the start of work in any repo or project workspace:
 
 1. inspect for a root project bootstrap file before interpreting project shorthand or taking meaningful action
-2. prefer `AGENT_PROJECT.md` when present
-3. if `AGENT_PROJECT.md` is not present, inspect other existing agent instruction files such as `AGENTS.md` or `CLAUDE.md`
+2. prefer `AGENTS.md` when present; it is the canonical file a repository carries
+3. if `AGENTS.md` is absent, read whichever native file the tool loads, such as `CLAUDE.md`; where one project spans several repositories, a project-level `AGENT_PROJECT.md` may sit above them
 4. treat the discovered project file as the local adapter for startup reads, command shorthands such as `ss` and `sss`, source-of-truth order, permissions, and artifact routing
 5. if no project bootstrap file exists, fall back to the shared operating model and verified repo state
 
@@ -615,7 +615,7 @@ The orchestrator or lead owns the broader context. Workers should stay narrowly 
 
 ## Native Tool Adapters
 
-Native tool files such as `CLAUDE.md`, `AGENT_PROJECT.md`, `AGENTS.md`, or similar are adapters, not the primary knowledge store.
+`AGENTS.md` carries a project's rules. Other native files such as `CLAUDE.md` point at it or import it. None of them is the primary store for task state, research, or working memory; that stays in the vault.
 
 ### Adapter Rule
 
@@ -623,7 +623,7 @@ Native tool files such as `CLAUDE.md`, `AGENT_PROJECT.md`, `AGENTS.md`, or simil
 - point tools toward the canonical project memory and source-of-truth docs
 - do not let each tool invent a separate project system
 - if multiple native files exist, they should mirror the same operating model and route into the same canonical records
-- treat agent-specific files such as `AGENTS.md` as compatibility adapters when a tool needs them, not as proof that every tool requires its own canonical file
+- add rules to `AGENTS.md` and nowhere else, so they cannot drift; a tool that reads only its own file gets a pointer to `AGENTS.md`, never a second copy of the rules
 
 ### What Native Files Should Contain
 
@@ -812,6 +812,8 @@ Examples:
 - existing `session.md`
 - existing `handoff.md`
 - existing `decisions.md`
+- existing `AGENTS.md`
+- existing `CLAUDE.md`
 - existing `AGENT_PROJECT.md`
 
 Correct behavior:
@@ -826,7 +828,7 @@ Do not create parallel competing files such as:
 
 - `tasks-new.md`
 - `tasks-v2.md`
-- `AGENT_PROJECT_v2.md`
+- `AGENTS_v2.md`
 
 One role should have one canonical active file unless a project explicitly documents a different rule.
 

@@ -79,8 +79,9 @@ Examples:
 - existing `notes.md`
 - existing `research.md`
 - existing `agent-handoff.md`
-- existing `AGENT_PROJECT.md`
+- existing `AGENTS.md`
 - existing `CLAUDE.md`
+- existing `AGENT_PROJECT.md`
 
 Do not create a second competing file unless the existing file cannot be adapted cleanly.
 

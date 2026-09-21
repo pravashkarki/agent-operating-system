@@ -1,10 +1,10 @@
-# Agent Project Template
+# AGENTS.md Template
 
 ## Purpose
 
 This file defines how agents and the owner work within this specific project or workspace.
 
-It is a project-level adapter for the shared operating model.
+It is the one file a coding agent loads for this repository. Rules go here and nowhere else.
 
 Use it directly for:
 

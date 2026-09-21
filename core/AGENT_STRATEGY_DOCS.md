@@ -8,7 +8,7 @@ It applies to internal and team-facing documents that set direction, explain dec
 
 It does not govern public writing such as blog posts, LinkedIn posts, articles, newsletters, or other writing meant for a broad outside audience.
 
-Project-level `AGENT_PROJECT.md` files may add stricter local rules, examples, and templates, but they must not weaken the rules in this file.
+A repository's `AGENTS.md` may add stricter local rules, examples, and templates, but it must not weaken the rules in this file.
 
 ## When To Read This
 
@@ -320,7 +320,7 @@ This file is part of the shared AOS writing layer for strategy-document work.
 
 The expected integration model is:
 
-- the AOS repo references it in `AGENT_PROJECT.md`
+- the AOS repo references it in `AGENTS.md`
 - project repos reference it when a task involves briefs, audits, memos, standards, or team-facing strategy documents
 - project-level files add local examples or stricter rules only when needed
 
