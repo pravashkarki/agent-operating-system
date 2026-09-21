@@ -49,4 +49,6 @@ Plan first. One thing at a time. Prefer reversible over risky. Inspect before yo
 
 Used daily since April 2026 by one owner with two to four agents across client and product work (web, mobile, infrastructure). It has not been tested with large teams or with agents that act without a human in the loop. The private edition carries a dated decisions log; changes here are made deliberately, not in passing.
 
-Written by [Pravash Karki](https://pravashkarki.com). Licensed under CC BY 4.0: use it, adapt it, credit the source.
+## License
+
+[CC BY 4.0](./LICENSE). Share and adapt it for any purpose, including commercially, with credit to [Pravash Karki](https://pravashkarki.com), a link to the license, and a note of what you changed.

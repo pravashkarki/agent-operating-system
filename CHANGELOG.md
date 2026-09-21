@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- `LICENSE.md` replaced by `LICENSE` carrying the canonical CC BY 4.0 text. The previous file was a short paraphrase, which GitHub could not detect, so the repo showed no license at all. The plain-language terms now live in the README.
+- Repository homepage set to the essay that explains the model.
+
 ## 2026-08-30
 
 - First public edition, sanitised from the private system in use since April 2026.
