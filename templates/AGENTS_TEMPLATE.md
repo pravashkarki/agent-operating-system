@@ -66,6 +66,8 @@ Read `<docs-root>/decisions.md` whenever the current task touches architecture, 
 
 ## Session Commands
 
+When the owner types `ss` or `sss`, follow `commands/ss.md` or `commands/sss.md` from the operating model. Any step defined below for this project overrides the matching step there.
+
 ### `ss`
 
 1. Read this file.

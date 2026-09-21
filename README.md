@@ -13,6 +13,7 @@ This is the public edition of a system used daily since April 2026; personal and
 - `core/AGENT_USER_TEMPLATE.md` · the operating model: plan-first workflow (with a defined lighter mode), decision boundaries (what the owner decides, what agents may decide, what agents must never decide alone), one-thing-at-a-time communication, task intake and priority, two levels of execution logging, change-impact checks, feature contracts, parallel worker packets and agent-to-agent conflict rules, cost budgets, untrusted input, outages, owner absence, rollback, onboarding and retiring rules, code security, and the session commands.
 - `core/AGENT_EXISTING_PROJECT_ADOPTION.md` · adopting the model in a project that already exists: rules first, keep working paths, restructure only when structure is the actual problem, back up before structural change.
 - `core/AGENT_STRATEGY_DOCS.md` · writing rules for direction-setting documents: briefs, standards, audit reports, decision memos, announcements.
+- `commands/ss.md`, `commands/sss.md` · the session commands, ready to run. In Claude Code they become `/ss` and `/sss`.
 - `templates/AGENTS_TEMPLATE.md` · the file a repository carries so any agent can start correctly. Codex and Cursor read it natively; Claude Code reads `CLAUDE.md`, which points at it.
 - `templates/AGENT_SUBPROJECT_TEMPLATE.md` · the narrower file for a repo or workstream inside a larger project.
 - `examples/` · one filled-in agents file and one worked two-agent scenario (handoff, conflict, rollback).
@@ -33,6 +34,15 @@ Add rules to `AGENTS.md` and nowhere else. The moment the same rule exists in tw
 - `sss` ends a session: update task state and the session file first, then the durable notes that changed, then show the owner the current task list.
 
 Both are defined in the operating model and can be renamed per project; the point is that the next session, in any tool, resumes from files rather than from memory.
+
+### Running them
+
+`commands/` holds both as runnable files. Keep it next to `core/`, wherever you put that.
+
+- **Claude Code:** copy or symlink the two files into `.claude/commands/` in a project, or into `~/.claude/commands/` for every project. Type `/ss`, `/ss <subproject>`, or `/sss`.
+- **Any tool that reads `AGENTS.md`:** the template already tells the agent to follow `commands/ss.md` and `commands/sss.md` when you type `ss` or `sss`.
+
+`ss` changes nothing. It reads, checks the repository, reports, and waits. `sss` refuses to call a session closed while anything is uncommitted.
 
 ## How to adopt it
 

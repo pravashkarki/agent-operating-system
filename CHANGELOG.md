@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.0 - 2026-09-21
+
+- `ss` and `sss` are now runnable. `commands/ss.md` and `commands/sss.md` implement the session contract as it is written in the operating model, with no new behaviour. In Claude Code they become `/ss` and `/sss`; any tool that reads `AGENTS.md` is pointed at them by the template. Until this release both existed only as prose, so every adopter had to build them.
+- Both were tested end to end through the Claude Code CLI on a fixture project. `ss` read the files in order, caught an untracked file, flagged a session note the repository did not support, and changed nothing. `sss` recorded the session, committed it, and refused to report the session closed while a file was still uncommitted.
+
 ## v1.0.0 - 2026-09-21
 
 - `LICENSE.md` replaced by `LICENSE` carrying the canonical CC BY 4.0 text. The previous file was a short paraphrase, which GitHub could not detect, so the repo showed no license at all. The plain-language terms now live in the README.
